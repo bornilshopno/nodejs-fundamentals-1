@@ -1,28 +1,27 @@
 [
   {
-    "title": "Getting Started with Flask",
-    "body": "Flask is a lightweight WSGI web application framework in Python. It’s easy to get started with and is perfect for small projects.",
+    "title": "Using Templates in Flask",
+    "body": "Jinja2 templates make it easy to generate HTML in Flask, Belive me",
     "createdAt": "2025-05-31T10:15:00Z"
   },
   {
-    "title": "Integrating OpenAI API",
-    "body": "You can use OpenAI’s GPT models to generate content by sending structured prompts to their API and processing the results in your application.",
-    "createdAt": "2025-05-30T14:30:00Z"
+    "title": "Understanding Flask Routing",
+    "body": "This is the updated version of body text",
+    "createdAt": "2025-05-30T14:20:00Z"
   },
   {
-    "title": "Understanding APScheduler",
-    "body": "APScheduler is a Python library that lets you schedule jobs to run at specific times or intervals. Great for background tasks like data refreshes.",
-    "createdAt": "2025-05-29T09:00:00Z"
+    "title": "Using Templates in Flask",
+    "body": "Jinja2 templates make it easy to generate HTML in Flask",
+    "createdAt": "2025-05-29T09:10:00Z"
   },
   {
-    "title": "Working with Flask Blueprints",
-    "body": "Flask Blueprints help you organize your application into reusable components. They're ideal for large apps with multiple modules.",
-    "createdAt": "6/1/2025, 2:53:03 AM"
+    "title": "Connecting Flask with a Database",
+    "body": "You can use SQLAlchemy or other ORMs with Flask",
+    "createdAt": "2025-05-28T17:05:00Z"
   },
-
   {
-    "title": "Working with Flask Blueprints",
-    "body": "Flask Blueprints help you organize your application into reusable components. They're ideal for large apps with multiple modules.",
-    "createdAt": "6/1/2025, 11:54:51 AM"
+    "title": "Handling Forms in Flask",
+    "body": "Flask-WTF simplifies form handling and validation",
+    "createdAt": "2025-05-27T11:30:00Z"
   }
 ]
