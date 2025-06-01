@@ -1,27 +1,32 @@
 [
   {
-    "title": "Using Templates in Flask",
-    "body": "Jinja2 templates make it easy to generate HTML in Flask, Belive me",
-    "createdAt": "2025-05-31T10:15:00Z"
+    "id": 1,
+    "title": "Getting Started with Express.js",
+    "body": "Express.js is a minimal and flexible Node.js web application framework.",
+    "createdAt": "6/1/2025, 8:33:28 PM"
   },
   {
-    "title": "Understanding Flask Routing",
-    "body": "This is the updated version of body text",
-    "createdAt": "2025-05-30T14:20:00Z"
+    "id": 2,
+    "title": "Understanding REST APIs",
+    "body": "REST APIs allow client-server communication using HTTP methods.",
+    "createdAt": "6/1/2025, 8:34:13 PM"
   },
   {
-    "title": "Using Templates in Flask",
-    "body": "Jinja2 templates make it easy to generate HTML in Flask",
-    "createdAt": "2025-05-29T09:10:00Z"
+    "id": 3,
+    "title": "Connecting MongoDB with Node.js",
+    "body": "You can use the MongoDB native driver or Mongoose to connect your app to a database.",
+    "createdAt": "6/1/2025, 8:34:35 PM"
   },
   {
-    "title": "Connecting Flask with a Database",
-    "body": "You can use SQLAlchemy or other ORMs with Flask",
-    "createdAt": "2025-05-28T17:05:00Z"
+    "id": 4,
+    "title": "Middleware in Express",
+    "body": "Middleware functions have access to the request and response objects.Check it out",
+    "createdAt": "6/1/2025, 8:34:54 PM"
   },
   {
-    "title": "Handling Forms in Flask",
-    "body": "Flask-WTF simplifies form handling and validation",
-    "createdAt": "2025-05-27T11:30:00Z"
+    "id": 5,
+    "title": "Error Handling in Node.js",
+    "body": "Proper error handling ensures your app can gracefully manage failures.",
+    "createdAt": "6/1/2025, 8:40:04 PM"
   }
 ]

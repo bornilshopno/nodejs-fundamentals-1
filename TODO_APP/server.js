@@ -11,8 +11,8 @@ const filepath = path.join(__dirname, "/DB/todo.json")
 
 const server = http.createServer((req, res) => {
 
-    const url= new URL(req.url, `https://${req.headers.host}`);
-    const pathname=url.pathname;
+    const url = new URL(req.url, `https://${req.headers.host}`);
+    const pathname = url.pathname;
     // console.log(url, "URL")
     // console.log(req.url, req.method);
     if (pathname === "/" && req.method === "GET") {
@@ -26,24 +26,24 @@ const server = http.createServer((req, res) => {
         })//setting header
         res.end(data)
     }
-  // GET a todo with query
-    else if (pathname==="/todo" && req.method === "GET") {
-        const title= url.searchParams.get(title);
+    // GET a todo with query
+    else if (pathname === "/todo" && req.method === "GET") {
+        const title = url.searchParams.get("title");
         console.log(title)
-        const data= fs.readFileSync(filepath,{encoding:"utf-8"})
-        const parsedData=JSON.parse(data);
-        const searchedData= parsedData.find(pd=>pd.title===title)
+        const data = fs.readFileSync(filepath, { encoding: "utf-8" })
+        const parsedData = JSON.parse(data);
+        const searchedData = parsedData.find(pd => pd.title === title)
         console.log(searchedData)
-        const todo=JSON.stringify(searchedData)
-       
+        const todo = JSON.stringify(searchedData)
+
         res.writeHead(200, {
             "content-type": "application/json"
         })//setting header
         res.end(todo)
     }
-
     //POST a do-to
     else if (pathname === "/todos/create" && req.method === "POST") {
+        console.log("checking")
         res.setHeader("content-type", "application/json")
         res.setHeader("email", "node@code.com")
         res.statusCode = 201
@@ -54,15 +54,16 @@ const server = http.createServer((req, res) => {
         });
 
         req.on('end', () => {
-            const { title, body } = JSON.parse(data);
-            // console.log(title,body);
+            const { id,title, body } = JSON.parse(data);
+            console.log(title,body);
             const createdAt = new Date().toLocaleString();
             const allToDos = fs.readFileSync(filepath, { encoding: "utf-8" });
             const parsedData = JSON.parse(allToDos);
-            parsedData.push({ title, body, createdAt })
+            console.log(parsedData);
+            parsedData.push({ id, title, body, createdAt })
 
             fs.writeFileSync(filepath, JSON.stringify(parsedData, null, 2), { encoding: "utf8" });
-            res.end(JSON.stringify({ title, body, createdAt }))//if error,,need to check here
+            res.end(JSON.stringify({ message: "Todo added successfully" }))
         });
 
 
@@ -74,7 +75,7 @@ const server = http.createServer((req, res) => {
         res.setHeader("content-type", "application/json")
         res.setHeader("email", "node@code.com")
         res.statusCode = 201
-        const title= url.searchParams.get("title");
+        const title = url.searchParams.get("title");
         console.log(title)
         let data = "";
         req.on("data", (chunk) => {
@@ -88,17 +89,33 @@ const server = http.createServer((req, res) => {
             // const createdAt = new Date().toLocaleString();
             const allToDos = fs.readFileSync(filepath, { encoding: "utf-8" });
             const parsedData = JSON.parse(allToDos);
-            const todoIndex=parsedData.findIndex((todo)=>todo.title===title)
+            const todoIndex = parsedData.findIndex((todo) => todo.title === title)
             console.log(todoIndex);
-            parsedData[todoIndex].body=body;
-          
+            parsedData[todoIndex].body = body;
+
             fs.writeFileSync(filepath, JSON.stringify(parsedData, null, 2), { encoding: "utf8" });
-            res.end(JSON.stringify({ title, body, createdAt:parsedData[todoIndex].createdAt }))//if error,,need to check here
+            res.end(JSON.stringify({ title, body, createdAt: parsedData[todoIndex].createdAt }))//if error,,need to check here
         });
 
 
 
 
+    }
+    //DELETE a do-to ///just copied logics
+    else if (pathname === "/todos/delete-todo" && req.method === "DELETE") {
+        res.setHeader("content-type", "application/json")
+        const title = url.searchParams.get("title");
+        console.log(title,1)
+      
+            const allToDos = fs.readFileSync(filepath, { encoding: "utf-8" });
+            const parsedData = JSON.parse(allToDos);
+            console.log(parsedData)
+            // Filter out the todo with the matching title
+            const updatedData = parsedData.filter((todo) => todo.title !== title);
+            console.log(updatedData)
+            fs.writeFileSync(filepath, JSON.stringify(updatedData, null, 2), { encoding: "utf8" });
+            res.end(JSON.stringify({ message: "Todo deleted successfully" }))
+      
     }
     else {
         res.end("Server Not Found")
