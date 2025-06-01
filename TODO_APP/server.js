@@ -2,25 +2,48 @@ const http = require("http");
 const path = require("path");
 const fs = require("fs");
 const { text, json } = require("stream/consumers");
+const { url } = require("inspector");
+const { URL } = require("url");
 
 const filepath = path.join(__dirname, "/DB/todo.json")
 
 
 
 const server = http.createServer((req, res) => {
+
+    const url= new URL(req.url, `https://${req.headers.host}`);
+    const pathname=url.pathname;
+    // console.log(url, "URL")
     // console.log(req.url, req.method);
-    if (req.url === "/" && req.method === "GET") {
+    if (pathname === "/" && req.method === "GET") {
         res.end("Welcome to TODO app server")
     }
-    else if (req.url === "/todos" && req.method === "GET") {
+    // GET all todo
+    else if (pathname === "/todos" && req.method === "GET") {
         const data = fs.readFileSync(filepath, { encoding: "utf-8" })
         res.writeHead(200, {
             "content-type": "application/json"
         })//setting header
         res.end(data)
     }
-    //post a do-to
-    else if (req.url === "/todos/create" && req.method === "POST") {
+  // GET a todo with query
+    else if (pathname==="/todo" && req.method === "GET") {
+        const title= url.searchParams.get("title");
+        console.log(title)
+        const data= fs.readFileSync(filepath,{encoding:"utf-8"})
+        const parsedData=JSON.parse(data);
+        const searchedData= parsedData.find(pd=>pd.title===title)
+        console.log(searchedData)
+        const todo=JSON.stringify(searchedData)
+       
+        res.writeHead(200, {
+            "content-type": "application/json"
+        })//setting header
+        res.end(todo)
+    }
+
+    //POST a do-to
+    else if (pathname === "/todos/create" && req.method === "POST") {
         res.setHeader("content-type", "application/json")
         res.setHeader("email", "node@code.com")
         res.statusCode = 201
