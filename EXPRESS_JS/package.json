@@ -1,0 +1,27 @@
+{
+  "name": "basics",
+  "version": "1.0.0",
+  "description": "1. Local Module\r 2. Build In Module\r 3. Third Party Module",
+  "main": "file-1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bornilshopno/nodejs-fundamentals-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bornilshopno/nodejs-fundamentals-1/issues"
+  },
+  "homepage": "https://github.com/bornilshopno/nodejs-fundamentals-1#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
