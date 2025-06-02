@@ -4,6 +4,7 @@
   "description": "1. Local Module\r 2. Build In Module\r 3. Third Party Module",
   "main": "file-1.js",
   "scripts": {
+    "start": "nodemon ./dist/app/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0"
   }
 }
