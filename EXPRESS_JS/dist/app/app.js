@@ -8,7 +8,10 @@ const todosrouter_1 = __importDefault(require("./todos/todosrouter"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json()); //parser
 app.use("/todos", todosrouter_1.default);
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
+    console.log("I am just a placeholder", { url: req.url, method: req.method, header: req.header });
+    next(); //this is forwarding to the next function called below
+}, (req, res) => {
     console.log(req.url);
     res.send('Hello World!!!You are reading my express server!');
 });
